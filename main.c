@@ -22,7 +22,7 @@ int main(void)
 		argv = command_spliter(command);
 		if (characters != 0)
 		{
-			if(execute(argv) == -1)
+			if(execute(argv) == 1)
 				printf("command not found:%s\n", command);
 		}
 		printf("command is: %s\n", command);
