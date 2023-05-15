@@ -18,10 +18,19 @@
 #define WRITE_BUF_SIZE		1024
 #define READ_BUF_SIZE		1024
 #define BUF_FLUSH		-1
+=======
+#define WRITE_BUF_SIZE		1024
+#define READ_BUF_SIZE		1024
+#define BUF_FLUSH		-1
 
 /*
  * For Command Chaining
  */
+#define CMD_NORM		0
+#define CMD_OR			1
+#define CMD_AND			2
+#define CMD_CHAIN		3
+=======
 #define CMD_NORM		0
 #define CMD_OR			1
 #define CMD_AND			2
@@ -38,6 +47,12 @@
  */
 #define USE_GETLINE		0
 #define USE_STRTOK		0
+
+#define HIST_FILE		".simple_shell_history"
+#define HIST_MAX		4096
+=======
+#define USE_GETLINE 0
+#define USE_STRTOK 0
 
 #define HIST_FILE		".simple_shell_history"
 #define HIST_MAX		4096
@@ -125,5 +140,27 @@ typedef struct builtin
 ssize_t get_input(info_t *);
 int _getline(info_t *, char **, size_t *);
 void sigintHandler(int);
+
+/*
+ * For atoi.c
+ */
+int interactive(info_t *);
+int is_delim(char, char *);
+int _isalpha(int);
+int _atoi(char *);
+
+/*
+ * For builtin1.c
+ */
+int _myexit(info_t *);
+int _mycd(info_t *);
+int _myhelp(info_t *);
+
+/*
+ * For builtin2.c
+ */
+int _myhistory(info_t *);
+int _myalias(info_t *);
+
 
 #endif
