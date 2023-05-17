@@ -162,5 +162,34 @@ int _myhelp(info_t *);
 int _myhistory(info_t *);
 int _myalias(info_t *);
 
+/*
+ * For error_output1.c
+ */
+void _eputs(char *);
+int _eputchar(char);
+int _putfd(char c, int fd);
+int _putsfd(char *str, int fd);
+
+/*
+ * For error_output2.c
+ */
+int _erratoi(char *);
+void print_error(info_t *, char *);
+int print_d(int, int);
+char *convert_number(long int, int, int);
+void remove_comments(char *);
+
+/*
+ * For environment.c
+ */
+char *_getenv(info_t *, const char *);
+int _myenv(info_t *);
+
+/*
+ * For exit.c
+ */
+char *_strncpy(char *, char *, int);
+char *_strncat(char *, char *, int);
+char *_strchr(char *, char);
 
 #endif
