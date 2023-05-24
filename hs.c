@@ -1,36 +1,43 @@
-#include "main.h"
-/**
- * main - the entry of the shell.
- * Return: 0 if the success of the program.
-*/
-int main(void)
-{
-	char* command;
-	size_t buffer_size;
-	size_t characters;
-	char **argv;
-	while (1)
-	{
-		printf("$ ");
-		fflush(stdout);
-		characters = getline(&command, &buffer_size, stdin);
-		if ((int) characters == EOF)
-		{
-			puts("");
-			break;
-		}
-		argv = command_spliter(command);
-		if (characters != 0)
-		{
-			if(execute(argv) == 1)
-				printf("command not found:%s\n", command);
-		}
-		printf("command is: %s\n", command);
-		printf("characters is: %ld\n", characters);
-		
-		
-	}
-	free(command);
-	return (0);
+#include "shell.h"
 
+/**
+ * main - Entry point.
+ * @ac: arg count pointer
+ * @av: arg vector pointer
+ * Return: 0 when successful, OR 1 on error
+*/
+int main(int ac, char **av)
+{
+	info_t info[] = { INFO_INIT };
+	int fd = 2;
+
+	asm ("mov %1, %0\n\t"
+			"add $3, %0"
+			: "=r" (fd)
+			: "r" (fd));
+
+	if (ac == 2)
+	{
+		fd = open(av[1], O_RDONLY);
+		if (fd == -1)
+		{
+			if (errno == EACCES)
+				exit(126);
+			if (errno == ENOENT)
+			{
+				_eputs(av[0]);
+				_eputs(": 0: Can't open ");
+				_eputs(av[1]);
+				_eputchar('\n');
+				_eputchar(BUF_FLUSH);
+				exit(127);
+			}
+			return (EXIT_FAILURE);
+		}
+		info->readfd = fd;
+	}
+	populate_env_list(info);
+	read_history(info);
+	hsh(info, av);
+	return (EXIT_SUCCESS);
 }
