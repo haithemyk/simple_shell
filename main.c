@@ -1,9 +1,10 @@
-#include "main.h"
+#include "shell.h"
+
 /**
- * main - the entry of the shell.
+ * main - Entry point.
  * @ac: arg count pointer
  * @av: arg vector pointer
- * Return: 0 if the success of the program.
+ * Return: 0 when successful, OR 1 on error
 */
 int main(int ac, char **av)
 {
