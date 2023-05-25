@@ -12,7 +12,7 @@ int main(void)
 
 	while (1)
 	{
-		printf("$ ");
+		printf("($) ");
 		fflush(stdout);
 		characters = getline(&command, &buffer_size, stdin);
 		if ((int) characters == EOF)
