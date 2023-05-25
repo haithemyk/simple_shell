@@ -9,6 +9,7 @@ int main(void)
 	size_t buffer_size;
 	size_t characters;
 	char **argv;
+	char **env;
 
 	while (1)
 	{
@@ -22,17 +23,15 @@ int main(void)
 		}
 		argv = command_spliter(command);
 		if (strcmp(argv[0], "exit") == 0)
-		    exit(0);
-	     if (strcmp(argv[0], "env") == 0)
-	     {
-		     extern char **environ;
-		     char **env = environ;
-		     while (*env != NULL)
-		     {
-			     printf("%s\n", *env);
-			     env++;
-		     }
-	     }
+			exit(0);
+		if (strcmp(argv[0], "env") == 0)
+		{
+			while (*env != NULL)
+			{
+				printf("%s\n", *env);
+				env++;
+			}
+		}
 		if (characters != 0)
 		{
 			if (execute(argv) == 1)
