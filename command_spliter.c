@@ -29,6 +29,7 @@ char **command_spliter(char cmnd[])
 	}
 	handle_path(args);
 	args[num_token] = NULL;
+	free(token);
 	return (args);
 }
 /**
