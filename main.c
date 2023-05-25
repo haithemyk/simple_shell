@@ -22,9 +22,17 @@ int main(void)
 		}
 		argv = command_spliter(command);
             if (strcmp(argv[0], "exit") == 0)
-	    {
 		    exit(0);
-	    }
+	     if (strcmp(argv[0], "env") == 0)
+	     {
+		     extern char **environ;
+		     char **env = environ;
+		     while (*env != NULL)
+		     {
+			     printf("%s\n", *env);
+			     env++;
+		     }
+	     }
 		if (characters != 0)
 		{
 			if (execute(argv) == 1)
