@@ -21,7 +21,7 @@ int main(void)
 			break;
 		}
 		argv = command_spliter(command);
-            if (strcmp(argv[0], "exit") == 0)
+		if (strcmp(argv[0], "exit") == 0)
 		    exit(0);
 	     if (strcmp(argv[0], "env") == 0)
 	     {
