@@ -5,10 +5,11 @@
 */
 int main(void)
 {
-	char* command;
+	char *command;
 	size_t buffer_size;
 	size_t characters;
 	char **argv;
+
 	while (1)
 	{
 		printf("$ ");
@@ -22,13 +23,9 @@ int main(void)
 		argv = command_spliter(command);
 		if (characters != 0)
 		{
-			if(execute(argv) == 1)
-				printf("command not found:%s\n", command);
+			if (execute(argv) == 1)
+				printf("No such file or directory\n");
 		}
-		printf("command is: %s\n", command);
-		printf("characters is: %ld\n", characters);
-		
-		
 	}
 	free(command);
 	return (0);

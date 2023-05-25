@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-char** command_spliter(char[]);
-int execute(char** );
+char **command_spliter(char[]);
+int execute(chari **);
+void handle_path(char **);
 #endif /* MAIN_H */

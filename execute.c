@@ -1,7 +1,12 @@
 #include "main.h"
 #include <sys/types.h>
 #include <sys/wait.h>
-int execute(char** argv)
+/**
+ * execute - the function will launch child process to execute
+ * @argv:the arguments array
+ * Return:the status of program
+ */
+int execute(char **argv)
 {
 	pid_t child_pid;
 	int status;
@@ -16,15 +21,13 @@ int execute(char** argv)
 	{
 		if (execve(argv[0], argv, NULL) == -1)
 		{
-			return(1);
+			return (1);
 		}
 	}
 	else
 	{
-        wait(&status);
-	return (0);
+		wait(&status);
+		return (0);
 	}
 	return (0);
-	
-	
 }
