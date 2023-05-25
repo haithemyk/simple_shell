@@ -5,6 +5,6 @@
 #include <unistd.h>
 #include <string.h>
 char **command_spliter(char[]);
-int execute(chari **);
+int execute(char **);
 void handle_path(char **);
 #endif /* MAIN_H */
