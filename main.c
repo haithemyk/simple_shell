@@ -40,6 +40,7 @@ int main(void)
 		}
 	}
 	free(command);
+	free(argv);
 	return (0);
 
 }
